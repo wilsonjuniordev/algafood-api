@@ -35,18 +35,19 @@
 
 ## 💻 Projeto
 
-Esse projeto foi desenvolvido durante o treinamento Especialista Spring REST da AlgaWorks. Trata-se de um projeto imersivo focado em back-end, do básico ao ultra avançado sobre REST APIs com Spring.
+Esse projeto é uma API de delivery de comida, foi desenvolvido durante o treinamento Especialista Spring REST da AlgaWorks. Trata-se de um projeto imersivo focado em back-end, do básico ao ultra avançado sobre REST APIs com Spring.
 
-<!-- ## 🎨 Layout
+<!--- ## 🎨 Layout --->
 
-Você pode encontrar o layout nesse link: -->
+<!--- Você pode encontrar o layout nesse link: --->
 
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Java](https://docs.oracle.com/en/java/)
-- [Spring](https://spring.io/)
+- [Java 16](https://docs.oracle.com/en/java/)
+- [Spring Boot Version 2.4.4](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+- [Maven 3.6.3](https://maven.apache.org/guides/index.html)
 
 ## :notebook: Executando
 
@@ -54,11 +55,21 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/wilsonjuniordev/algaworks-algafood.git
+$ git clone https://github.com/wilsonjuniordev/algafood-api.git
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd algafood
+$ cd algafood-api
+
+# Instale as dependências do maven gerando o jar
+$ ./mvnw clean install
+
+# Rode a aplicação Java
+$ java -jar target/algafood-api-0.0.1-SNAPSHOT.jar
 ```
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 
