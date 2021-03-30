@@ -1,11 +1,11 @@
 <h1 align="center">
     <a href="https://www.algaworks.com/" target="_blank">
-      <img alt="Logo Especialista Spring REST" title="#especialista-spring-rest" src=".github/logo.png" width="250px" />
+      <img alt="Logo Especialista Spring REST" title="#especialista-spring-rest" src=".github/logo-especialista-spring-rest.png" />
     </a>
 </h1>
 
 <h4 align="center">
-  🚀 Especialista Spring REST - AlgaFood
+  🚀 AlgaFood API - Especialista Spring REST
 </h4>
 
 <p align="center">
@@ -25,15 +25,15 @@
 </p>
 
 <p align="center">
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <!-- <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-executando">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#notebook-executando">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
 <br>
 
-## 💻 Projeto
+## :computer: Projeto
 
 Esse projeto é uma API de delivery de comida, foi desenvolvido durante o treinamento Especialista Spring REST da AlgaWorks. Trata-se de um projeto imersivo focado em back-end, do básico ao ultra avançado sobre REST APIs com Spring.
 
@@ -45,9 +45,9 @@ Esse projeto é uma API de delivery de comida, foi desenvolvido durante o treina
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Java 16](https://docs.oracle.com/en/java/)
-- [Spring Boot Version 2.4.4](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
-- [Maven 3.6.3](https://maven.apache.org/guides/index.html)
+- [Java](https://docs.oracle.com/en/java/)
+- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+- [Maven](https://maven.apache.org/guides/index.html)
 
 ## :notebook: Executando
 
@@ -57,7 +57,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 # Clone este repositório
 $ git clone https://github.com/wilsonjuniordev/algafood-api.git
 
-# Acesse a pasta do projeto no seu terminal/cmd
+# Acesse a pasta do projeto no seu terminal / cmd
 $ cd algafood-api
 
 # Instale as dependências do maven gerando o jar
@@ -69,7 +69,7 @@ $ java -jar target/algafood-api-0.0.1-SNAPSHOT.jar
 
 ## :memo: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
