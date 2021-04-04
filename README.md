@@ -48,6 +48,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Java](https://docs.oracle.com/en/java/)
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 - [Maven](https://maven.apache.org/guides/index.html)
+- [Lombok](https://projectlombok.org/)
 
 ## :notebook: Executando
 
