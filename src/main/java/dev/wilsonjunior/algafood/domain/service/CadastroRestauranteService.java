@@ -1,8 +1,11 @@
 package dev.wilsonjunior.algafood.domain.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import dev.wilsonjunior.algafood.domain.exception.EntidadeEmUsoException;
 import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
 import dev.wilsonjunior.algafood.domain.model.Cozinha;
 import dev.wilsonjunior.algafood.domain.model.Restaurante;
@@ -17,20 +20,30 @@ public class CadastroRestauranteService {
 
 	@Autowired
 	RestauranteRepository restauranteRepository;
-	
+
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
-	
+
 	public Restaurante salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-		
+
 		if (cozinha == null) {
 			throw new EntidadeNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId));
 		}
 		restaurante.setCozinha(cozinha);
-		
+
 		return restauranteRepository.salvar(restaurante);
 	}
-	
+
+	public void excluir(Long restauranteId) {
+		try {
+			restauranteRepository.remover(restauranteId);
+		} catch (EmptyResultDataAccessException e) {
+			throw new EntidadeNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, restauranteId));
+		} catch (DataIntegrityViolationException e) {
+			throw new EntidadeEmUsoException(String.format(MSG_COZINHA_ESTA_EM_USO, restauranteId));
+		}
+	}
+
 }
