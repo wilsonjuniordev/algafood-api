@@ -61,7 +61,7 @@ public class RestauranteController {
 
 	@PutMapping("/{restauranteId}")
 	public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
- 
+
 		try {
 			Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
 
@@ -82,7 +82,7 @@ public class RestauranteController {
 	}
 
 	@DeleteMapping("/{restauranteId}")
-	public ResponseEntity<Restaurante> remover(@PathVariable Long restauranteId) {
+	public ResponseEntity<?> remover(@PathVariable Long restauranteId) {
 
 		try {
 			cadastroRestaurante.excluir(restauranteId);
@@ -93,7 +93,7 @@ public class RestauranteController {
 			return ResponseEntity.notFound().build();
 
 		} catch (EntidadeEmUsoException e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 		}
 	}
 

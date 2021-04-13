@@ -2,8 +2,6 @@ package dev.wilsonjunior.algafood.api.controller;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

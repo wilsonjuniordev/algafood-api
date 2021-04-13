@@ -35,7 +35,7 @@
 
 ## :computer: Projeto
 
-Esse projeto é uma API de delivery de comida, foi desenvolvido durante o treinamento Especialista Spring REST da AlgaWorks. Trata-se de um projeto imersivo focado em back-end, do básico ao ultra avançado sobre REST APIs com Spring.
+O projeto API de delivery de comida, foi desenvolvido durante o treinamento Especialista Spring REST da AlgaWorks. Trata-se de um projeto imersivo focado em back-end, do básico ao ultra avançado sobre REST APIs com Spring.
 
 <!--- ## 🎨 Layout --->
 
@@ -43,7 +43,7 @@ Esse projeto é uma API de delivery de comida, foi desenvolvido durante o treina
 
 ## :rocket: Tecnologias
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+Foi desenvolvido com as seguintes tecnologias:
 
 - [Java](https://docs.oracle.com/en/java/)
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)

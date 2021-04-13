@@ -15,8 +15,9 @@ import dev.wilsonjunior.algafood.domain.repository.RestauranteRepository;
 @Service
 public class CadastroRestauranteService {
 
-	public static final String MSG_COZINHA_NAO_EXISTE = "Não existe um cadastro de cozinha com código %d";
-	public static final String MSG_COZINHA_ESTA_EM_USO = "Cozinha de código %d não pode ser removida, pois está em uso";
+	public static final String MSG_COZINHA_NAO_EXISTE = "Não existe cadastro de cozinha com código %d";
+	public static final String MSG_RESTAURANTE_NAO_EXISTE = "Não existe cadastro de restaurante com código %d";
+	public static final String MSG_RESTAURANTE_ESTA_EM_USO = "Restaurante de código %d não pode ser removida, pois está em uso";
 
 	@Autowired
 	RestauranteRepository restauranteRepository;
@@ -40,9 +41,9 @@ public class CadastroRestauranteService {
 		try {
 			restauranteRepository.remover(restauranteId);
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, restauranteId));
+			throw new EntidadeNaoEncontradaException(String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId));
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(String.format(MSG_COZINHA_ESTA_EM_USO, restauranteId));
+			throw new EntidadeEmUsoException(String.format(MSG_RESTAURANTE_ESTA_EM_USO, restauranteId));
 		}
 	}
 
