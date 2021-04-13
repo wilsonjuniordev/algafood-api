@@ -61,7 +61,7 @@ public class RestauranteController {
 
 	@PutMapping("/{restauranteId}")
 	public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
-
+ 
 		try {
 			Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
 
