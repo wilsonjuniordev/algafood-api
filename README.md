@@ -45,9 +45,10 @@ O projeto API de delivery de comida, foi desenvolvido durante o treinamento Espe
 
 Foi desenvolvido com as seguintes tecnologias:
 
-- [Java](https://docs.oracle.com/en/java/)
-- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+- [Java](https://docs.oracle.com/en/java)
 - [Maven](https://maven.apache.org/guides/index.html)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [Lombok](https://projectlombok.org/)
 
 ## :notebook: Executando
