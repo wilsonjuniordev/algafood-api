@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://www.algaworks.com/" target="_blank">
-      <img alt="Logo Especialista Spring REST" title="#especialista-spring-rest" src=".github/logo-especialista-spring-rest.png" />
+      <img alt="Logo Especialista Spring REST" title="#especialista-spring-rest" src=".github/banner-especialista-spring-rest.png" />
     </a>
 </h1>
 
