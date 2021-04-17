@@ -13,15 +13,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/wilsonjuniordev/algaworks-algafood">
 
-  <a href="https://github.com/wilsonjuniordev/algaworks-algafood/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/wilsonjuniordev/algaworks-algafood">
-  </a>
-
-  <a href="https://github.com/wilsonjuniordev/algaworks-algafood/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/wilsonjuniordev/algaworks-algafood">
-  </a>
-
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-blue">
 </p>
 
 <p align="center">
@@ -50,6 +42,7 @@ Foi desenvolvido com as seguintes tecnologias:
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [Lombok](https://projectlombok.org/)
+- [PostgreSQL](https://www.postgresql.org/docs/)
 
 ## :notebook: Executando
 
