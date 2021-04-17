@@ -52,7 +52,6 @@ public class CozinhaController {
 	public ResponseEntity<?> adicionar(@RequestBody Cozinha cozinha) {
 		try {
 			cozinha = cozinhaRepository.save(cozinha);
-
 			return ResponseEntity.status(HttpStatus.CREATED).body(cozinha);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());

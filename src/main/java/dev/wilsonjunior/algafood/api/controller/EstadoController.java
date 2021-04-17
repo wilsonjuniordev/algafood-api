@@ -30,7 +30,7 @@ public class EstadoController {
 	EstadoRepository estadoRepository;
 
 	@Autowired
-	CadastroEstadoService cadastroEstadoService;
+	CadastroEstadoService cadastroEstado;
 
 	@GetMapping
 	public List<Estado> listar() {
@@ -64,15 +64,15 @@ public class EstadoController {
 	public ResponseEntity<?> atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
 
 		try {
-			Optional<Estado> estadoAtual = estadoRepository.findById(estadoId);
+			Estado estadoAtual = estadoRepository.findById(estadoId).orElse(null);
 
-			if (estadoAtual.isPresent()) {
+			if (estadoAtual != null) {
 				estado.setId(estadoId);
-				BeanUtils.copyProperties(estado, estadoAtual.get());
+				BeanUtils.copyProperties(estado, estadoAtual);
 
-				Estado estadoSalvo = cadastroEstadoService.salvar(estadoAtual.get());
+				estadoAtual = cadastroEstado.salvar(estadoAtual);
 
-				return ResponseEntity.ok(estadoSalvo);
+				return ResponseEntity.ok(estadoAtual);
 			}
 
 			return ResponseEntity.notFound().build();
@@ -86,7 +86,7 @@ public class EstadoController {
 	public ResponseEntity<?> remover(@PathVariable Long estadoId) {
 
 		try {
-			cadastroEstadoService.excluir(estadoId);
+			cadastroEstado.excluir(estadoId);
 			return ResponseEntity.noContent().build();
 
 		} catch (EntidadeNaoEncontradaException e) {

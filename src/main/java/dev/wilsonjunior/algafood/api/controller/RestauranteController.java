@@ -70,15 +70,15 @@ public class RestauranteController {
 	public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
 
 		try {
-			Optional<Restaurante> restauranteAtual = restauranteRepository.findById(restauranteId);
+			Restaurante restauranteAtual = restauranteRepository.findById(restauranteId).orElse(null);
 
-			if (restauranteAtual.isPresent()) {
+			if (restauranteAtual != null) {
 				restaurante.setId(restauranteId);
-				BeanUtils.copyProperties(restaurante, restauranteAtual.get());
+				BeanUtils.copyProperties(restaurante, restauranteAtual);
 
-				Restaurante restauranteSalvo = cadastroRestaurante.salvar(restaurante);
+				restauranteAtual = cadastroRestaurante.salvar(restauranteAtual);
 
-				return ResponseEntity.ok(restauranteSalvo);
+				return ResponseEntity.ok(restauranteAtual);
 			}
 
 			return ResponseEntity.notFound().build();
