@@ -43,6 +43,7 @@ Foi desenvolvido com as seguintes tecnologias:
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [Lombok](https://projectlombok.org/)
 - [PostgreSQL](https://www.postgresql.org/docs/)
+- [Flyway](https://flywaydb.org/)
 
 ## :notebook: Executando
 
