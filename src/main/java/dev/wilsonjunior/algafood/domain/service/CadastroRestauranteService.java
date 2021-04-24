@@ -9,7 +9,6 @@ import dev.wilsonjunior.algafood.domain.exception.EntidadeEmUsoException;
 import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
 import dev.wilsonjunior.algafood.domain.model.Cozinha;
 import dev.wilsonjunior.algafood.domain.model.Restaurante;
-import dev.wilsonjunior.algafood.domain.repository.CozinhaRepository;
 import dev.wilsonjunior.algafood.domain.repository.RestauranteRepository;
 
 @Service
@@ -23,14 +22,12 @@ public class CadastroRestauranteService {
 	RestauranteRepository restauranteRepository;
 
 	@Autowired
-	private CozinhaRepository cozinhaRepository;
+	private CadastroCozinhaService cadastroCozinhaService;
 
 	public Restaurante salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
-		
-		Cozinha cozinha = cozinhaRepository.findById(cozinhaId)
-				.orElseThrow(() -> new EntidadeNaoEncontradaException(
-						String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId)));
+
+		Cozinha cozinha = cadastroCozinhaService.buscarOuFalhar(cozinhaId);
 
 		restaurante.setCozinha(cozinha);
 
@@ -41,10 +38,18 @@ public class CadastroRestauranteService {
 		try {
 			restauranteRepository.deleteById(restauranteId);
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId));
+			throw new EntidadeNaoEncontradaException(//
+					String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId));
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(String.format(MSG_RESTAURANTE_ESTA_EM_USO, restauranteId));
+			throw new EntidadeEmUsoException(//
+					String.format(MSG_RESTAURANTE_ESTA_EM_USO, restauranteId));
 		}
+	}
+
+	public Restaurante buscarOuFalhar(Long restauranteId) {
+		return restauranteRepository.findById(restauranteId).//
+				orElseThrow(() -> new EntidadeNaoEncontradaException(//
+						String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId)));
 	}
 
 }

@@ -26,11 +26,16 @@ public class CadastroEstadoService {
 	public void excluir(Long estadoId) {
 		try {
 			estadoRepository.deleteById(estadoId);
-			;
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(String.format(MSG_ESTADO_NAO_EXISTE, estadoId));
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(String.format(MSG_ESTADO_ESTA_EM_USO, estadoId));
 		}
+	}
+
+	public Estado buscarOuFalhar(Long estadoId) {
+		return estadoRepository.findById(estadoId)//
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(//
+						String.format(MSG_ESTADO_NAO_EXISTE, estadoId)));
 	}
 }

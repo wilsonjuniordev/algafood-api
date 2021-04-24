@@ -10,7 +10,6 @@ import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException
 import dev.wilsonjunior.algafood.domain.model.Cidade;
 import dev.wilsonjunior.algafood.domain.model.Estado;
 import dev.wilsonjunior.algafood.domain.repository.CidadeRepository;
-import dev.wilsonjunior.algafood.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroCidadeService {
@@ -23,13 +22,11 @@ public class CadastroCidadeService {
 	CidadeRepository cidadeRepository;
 
 	@Autowired
-	EstadoRepository estadoRepository;
+	CadastroEstadoService cadastroEstadoService;
 
 	public Cidade salvar(Cidade cidade) {
 		Long estadoId = cidade.getEstado().getId();
-		Estado estado = estadoRepository.findById(estadoId)
-				.orElseThrow(() -> new EntidadeNaoEncontradaException(
-						String.format(MSG_ESTADO_NAO_EXISTE, estadoId)));
+		Estado estado = cadastroEstadoService.buscarOuFalhar(estadoId);
 
 		cidade.setEstado(estado);
 
@@ -40,10 +37,18 @@ public class CadastroCidadeService {
 		try {
 			cidadeRepository.deleteById(cidadeId);
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_EXISTE, cidadeId));
+			throw new EntidadeNaoEncontradaException(//
+					String.format(MSG_CIDADE_NAO_EXISTE, cidadeId));
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(String.format(MSG_CIDADE_ESTA_EM_USO, cidadeId));
+			throw new EntidadeEmUsoException(//
+					String.format(MSG_CIDADE_ESTA_EM_USO, cidadeId));
 		}
+	}
+
+	public Cidade buscarOuFalhar(Long cidadeId) {
+		return cidadeRepository.findById(cidadeId)//
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(//
+						String.format(MSG_CIDADE_NAO_EXISTE, cidadeId)));
 	}
 
 }
