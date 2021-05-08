@@ -6,7 +6,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import dev.wilsonjunior.algafood.domain.exception.EntidadeEmUsoException;
-import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
+import dev.wilsonjunior.algafood.domain.exception.RestauranteNaoEncontradoException;
 import dev.wilsonjunior.algafood.domain.model.Cozinha;
 import dev.wilsonjunior.algafood.domain.model.Restaurante;
 import dev.wilsonjunior.algafood.domain.repository.RestauranteRepository;
@@ -38,8 +38,7 @@ public class CadastroRestauranteService {
 		try {
 			restauranteRepository.deleteById(restauranteId);
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(//
-					String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId));
+			throw new RestauranteNaoEncontradoException(restauranteId);
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(//
 					String.format(MSG_RESTAURANTE_ESTA_EM_USO, restauranteId));
@@ -48,8 +47,7 @@ public class CadastroRestauranteService {
 
 	public Restaurante buscarOuFalhar(Long restauranteId) {
 		return restauranteRepository.findById(restauranteId).//
-				orElseThrow(() -> new EntidadeNaoEncontradaException(//
-						String.format(MSG_RESTAURANTE_NAO_EXISTE, restauranteId)));
+				orElseThrow(() -> new RestauranteNaoEncontradoException(restauranteId));
 	}
 
 }

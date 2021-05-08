@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import dev.wilsonjunior.algafood.domain.exception.CozinhaNaoEncontradaException;
 import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
 import dev.wilsonjunior.algafood.domain.exception.NegocioException;
 import dev.wilsonjunior.algafood.domain.model.Restaurante;
@@ -52,8 +53,8 @@ public class RestauranteController {
 	public Restaurante adicionar(@RequestBody Restaurante restaurante) {
 		try {
 			return cadastroRestaurante.salvar(restaurante);
-		} catch (EntidadeNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage());
+		} catch (CozinhaNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage(), e);
 		}
 	}
 
@@ -67,8 +68,8 @@ public class RestauranteController {
 
 		try {
 			return cadastroRestaurante.salvar(restauranteAtual);
-		} catch (EntidadeNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage());
+		} catch (CozinhaNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage(), e);
 		}
 	}
 
