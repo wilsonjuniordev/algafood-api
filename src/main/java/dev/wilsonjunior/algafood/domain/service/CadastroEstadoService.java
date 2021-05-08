@@ -6,14 +6,13 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import dev.wilsonjunior.algafood.domain.exception.EntidadeEmUsoException;
-import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
+import dev.wilsonjunior.algafood.domain.exception.EstadoNaoEncontradoException;
 import dev.wilsonjunior.algafood.domain.model.Estado;
 import dev.wilsonjunior.algafood.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroEstadoService {
 
-	public static final String MSG_ESTADO_NAO_EXISTE = "Não existe um cadastro de estado com código %d";
 	public static final String MSG_ESTADO_ESTA_EM_USO = "Estado de código %d não pode ser removido, pois está em uso";
 
 	@Autowired
@@ -27,7 +26,7 @@ public class CadastroEstadoService {
 		try {
 			estadoRepository.deleteById(estadoId);
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_ESTADO_NAO_EXISTE, estadoId));
+			throw new EstadoNaoEncontradoException(estadoId);
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(String.format(MSG_ESTADO_ESTA_EM_USO, estadoId));
 		}
@@ -35,7 +34,6 @@ public class CadastroEstadoService {
 
 	public Estado buscarOuFalhar(Long estadoId) {
 		return estadoRepository.findById(estadoId)//
-				.orElseThrow(() -> new EntidadeNaoEncontradaException(//
-						String.format(MSG_ESTADO_NAO_EXISTE, estadoId)));
+				.orElseThrow(() -> new EstadoNaoEncontradoException(estadoId));
 	}
 }
