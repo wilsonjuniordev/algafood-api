@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.wilsonjunior.algafood.domain.exception.CozinhaNaoEncontradaException;
-import dev.wilsonjunior.algafood.domain.exception.EntidadeNaoEncontradaException;
 import dev.wilsonjunior.algafood.domain.exception.NegocioException;
 import dev.wilsonjunior.algafood.domain.model.Restaurante;
 import dev.wilsonjunior.algafood.domain.repository.RestauranteRepository;

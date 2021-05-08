@@ -56,10 +56,10 @@ public class CidadeController {
 
 		try {
 			Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
-			
+
 			cidade.setId(cidadeId);
 			BeanUtils.copyProperties(cidade, cidadeAtual);
-			
+
 			return cadastroCidade.salvar(cidadeAtual);
 		} catch (EstadoNaoEncontradoException e) {
 			throw new NegocioException(e.getMessage(), e);
