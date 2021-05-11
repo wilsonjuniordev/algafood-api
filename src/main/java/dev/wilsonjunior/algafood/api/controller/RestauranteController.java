@@ -58,17 +58,17 @@ public class RestauranteController {
 	}
 
 	@PutMapping("/{restauranteId}")
-	public Restaurante atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
-		Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
-
-		restaurante.setId(restauranteId);
-		BeanUtils.copyProperties(restaurante, restauranteAtual, //
-				"formasPagamento", "endereco", "dataCadastro", "produtos");
-
+	public Restaurante atualizar(@PathVariable Long restauranteId,
+			@RequestBody Restaurante restaurante) {
 		try {
+			Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
+			
+			BeanUtils.copyProperties(restaurante, restauranteAtual, 
+					"id", "formasPagamento", "endereco", "dataCadastro", "produtos");
+
 			return cadastroRestaurante.salvar(restauranteAtual);
 		} catch (CozinhaNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage(), e);
+			throw new NegocioException(e.getMessage());
 		}
 	}
 
