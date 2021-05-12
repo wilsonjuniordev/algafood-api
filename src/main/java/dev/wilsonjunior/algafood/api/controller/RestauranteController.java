@@ -53,10 +53,10 @@ public class RestauranteController {
 		try {
 			return cadastroRestaurante.salvar(restaurante);
 		} catch (CozinhaNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage(), e);
+			throw new NegocioException(e.getMessage());
 		}
 	}
-
+	
 	@PutMapping("/{restauranteId}")
 	public Restaurante atualizar(@PathVariable Long restauranteId,
 			@RequestBody Restaurante restaurante) {
