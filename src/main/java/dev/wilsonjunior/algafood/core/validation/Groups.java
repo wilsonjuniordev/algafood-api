@@ -1,4 +1,4 @@
-package dev.wilsonjunior.algafood;
+package dev.wilsonjunior.algafood.core.validation;
 
 public interface Groups {
 	
