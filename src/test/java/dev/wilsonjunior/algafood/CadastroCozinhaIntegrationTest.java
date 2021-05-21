@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import javax.validation.ConstraintViolationException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.*;
+//import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,7 @@ import dev.wilsonjunior.algafood.domain.service.CadastroCozinhaService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class CadastroCozinhaIntegrationTests {
+class CadastroCozinhaIntegrationTest {
 
 	@Autowired
 	private CadastroCozinhaService cadastroCozinha;
@@ -33,22 +34,27 @@ class CadastroCozinhaIntegrationTests {
 		assertThat(novaCozinha.getId()).isNotNull();
 	}
 
-	@Test(expected = ConstraintViolationException.class)
+	@Test
 	public void deveFalhar_QuandoCadastrarCozinhaSemNome() {
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome(null);
-
-		novaCozinha = cadastroCozinha.salvar(novaCozinha);
+		Assertions.assertThrows(ConstraintViolationException.class, () -> {
+			Cozinha novaCozinha = new Cozinha();
+			novaCozinha.setNome(null);
+			novaCozinha = cadastroCozinha.salvar(novaCozinha);
+		});
 	}
-	
-	@Test(expected = EntidadeEmUsoException.class)
+
+	@Test
 	public void deveFalhar_QuandoExcluirCozinhaEmUso() {
-		cadastroCozinha.excluir(1L);
+		Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
+			cadastroCozinha.excluir(1L);
+		});
 	}
 
-	@Test(expected = CozinhaNaoEncontradaException.class)
+	@Test
 	public void deveFalhar_QuandoExcluirCozinhaInexistente() {
-		cadastroCozinha.excluir(100L);
+		Assertions.assertThrows(CozinhaNaoEncontradaException.class, () -> {
+			cadastroCozinha.excluir(100L);
+		});
 	}
-	
+
 }
