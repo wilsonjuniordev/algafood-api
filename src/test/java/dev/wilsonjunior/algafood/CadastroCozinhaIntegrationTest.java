@@ -1,6 +1,7 @@
 package dev.wilsonjunior.algafood;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import javax.validation.ConstraintViolationException;
 
@@ -36,7 +37,7 @@ class CadastroCozinhaIntegrationTest {
 
 	@Test
 	public void deveFalhar_QuandoCadastrarCozinhaSemNome() {
-		Assertions.assertThrows(ConstraintViolationException.class, () -> {
+		assertThrows(ConstraintViolationException.class, () -> {
 			Cozinha novaCozinha = new Cozinha();
 			novaCozinha.setNome(null);
 			novaCozinha = cadastroCozinha.salvar(novaCozinha);
@@ -45,14 +46,14 @@ class CadastroCozinhaIntegrationTest {
 
 	@Test
 	public void deveFalhar_QuandoExcluirCozinhaEmUso() {
-		Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
+		assertThrows(EntidadeEmUsoException.class, () -> {
 			cadastroCozinha.excluir(1L);
 		});
 	}
 
 	@Test
 	public void deveFalhar_QuandoExcluirCozinhaInexistente() {
-		Assertions.assertThrows(CozinhaNaoEncontradaException.class, () -> {
+		assertThrows(CozinhaNaoEncontradaException.class, () -> {
 			cadastroCozinha.excluir(100L);
 		});
 	}
